@@ -51,9 +51,18 @@
 <!-- ナビバー読み込み用JavaScript -->
 <script>
   fetch("navbar.html")
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Navbar fetch failed: " + response.status);
+      }
+      return response.text();
+    })
     .then(data => {
       document.getElementById("navbar-placeholder").innerHTML = data;
+    })
+    .catch(error => {
+      console.error("Navbar load error:", error);
+      document.getElementById("navbar-placeholder").innerHTML = "<nav style='background:#b22222;color:#fff;text-align:center;padding:1rem;'>ナビゲーションの読み込みに失敗しました</nav>";
     });
 </script>
   <main>
