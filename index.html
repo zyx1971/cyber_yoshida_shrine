@@ -1,43 +1,135 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>サイバー吉田神社</title>
-    <style>
-        
-    header {
-        background-image: url('assets/koyasan_style_header.jpg');
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 4rem 2rem;
-        text-align: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サイバー吉田神社</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Shippori Mincho', serif;
+      background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #111;
     }
-
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        body {
-            margin: 0;
-            font-family: "Yu Gothic", sans-serif;
-        }
-    </style>
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    .sidebar a {
+      writing-mode: vertical-rl;
+      margin: 10px 0;
+      color: #b22222;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .intro {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    .intro h1 {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 12vw;
+      color: #b22222;
+      text-shadow: 2px 2px 5px #eee;
+      margin: 0;
+    }
+    .intro p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    main {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="language-switch" style="position:absolute; top:10px; right:20px;">
-      <a href="index_en.html">English</a>
-    </div>
-    <header>
-        <h1 style="font-size: 3em;">サイバー<br>吉田神社</h1>
-        <p>システムGo-Live安全祈願・プロジェクト炎上除けの神社</p>
-        <nav>
-            <a href="kitou.html">ご祈祷</a>
-            <a href="omikuji.html">おみくじ</a>
-            <a href="ofuse.html">お布施</a>
-        </nav>
-    </header>
+  <div class="sidebar">
+    <a href="#about" onclick="showSection('about')">ご由緒</a>
+    <a href="#omikuji" onclick="showSection('omikuji')">おみくじ</a>
+    <a href="#kitou" onclick="showSection('kitou')">ご祈祷</a>
+    <a href="#ofuse" onclick="showSection('ofuse')">お布施</a>
+  </div>
+
+  <div class="intro">
+    <h1>⛩️ サイバー吉田神社 ⛩️</h1>
+    <p>システムGo-Live安全祈願・プロジェクト炎上除けの神社</p>
+  </div>
+
+  <main id="main">
+    <!-- 各セクションのHTMLは必要に応じてここに表示されます -->
+  </main>
+
+  <script>
+    const sections = {
+      about: `
+        <section id="about">
+          <h2>サイバー吉田神社とは</h2>
+          <p>
+            サイバー吉田神社は、1997年に創建されたWeb上の神社です。<br>
+            吉田神は和歌山の海に宿る神で、プロジェクト炎上除けやGo-Live安全祈願を司ります。<br>
+            高野山の神聖な霊気を受け継ぎ、システムに関わるすべての人々を守護します。
+          </p>
+        </section>
+      `,
+      omikuji: `
+        <section id="omikuji">
+          <h2>おみくじ</h2>
+          <p>運試しはこちら。近未来の運勢をAIが占います。</p>
+          <button onclick="drawOmikuji()">おみくじを引く</button>
+          <p id="omikuji-result"></p>
+        </section>
+      `,
+      kitou: `
+        <section id="kitou">
+          <h2>ご祈祷</h2>
+          <p>Go-Live前に、吉田神のご加護を。</p>
+          <form onsubmit="pray(event)">
+            <label>祈願内容：<br>
+              <input type="text" id="wish" required>
+            </label><br><br>
+            <button type="submit">祈願する</button>
+          </form>
+          <p id="kitou-result"></p>
+          <button onclick="showEma()">みんなの御祈願を見る</button>
+          <div id="ema-board" class="ema-board"></div>
+        </section>
+      `,
+      ofuse: `
+        <section id="ofuse">
+          <h2>お布施</h2>
+          <p>感謝の気持ちを表しましょう（これは仮想のお布施です）</p>
+          <label>お布施金額（円）：<br>
+            <input type="number" id="donation" min="1" required>
+          </label><br>
+          <button onclick="donate()">お布施する</button>
+          <p id="donation-total">総お布施額：0 円</p>
+        </section>
+      `
+    };
+
+    function showSection(name) {
+      const main = document.getElementById('main');
+      main.style.display = 'block';
+      main.innerHTML = sections[name];
+    }
+  </script>
 </body>
 </html>
