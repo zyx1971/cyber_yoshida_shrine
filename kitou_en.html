@@ -78,15 +78,17 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="omikuji.html">Omikuji</a>
-    <a href="kitou.html">Prayer</a>
-    <a href="ofuse.html">Offeringt</a>
-      <a href="kitou_en.html" style="float:right; font-size: 1rem;">English</a>
-  </nav>
+<!-- ナビバーの読み込み場所 -->
+<div id="navbar-placeholder"></div>
 
+<!-- ナビバー読み込み用JavaScript -->
+<script>
+  fetch("navbar_en.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    });
+</script>
   <main>
     <h1><span style="color: white;">Prayer</h1>
     <input type="text" style="width: 80%; height: 4em; font-size: 1.5em; color: white;" style="color: white; color: white;" style="color: white;" id="wish" placeholder="Please input your wish" />
