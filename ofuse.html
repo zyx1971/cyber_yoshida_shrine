@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>お布施 | サイバー吉田神社</title>
+  <style>
+    body {
+      font-family: 'Shippori Mincho', serif;
+      background-image: url('https://images.unsplash.com/photo-1526740570191-2b4e9b2f84c9');
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+      color: #333;
+      text-align: center;
+    }
+    nav {
+      background-color: #b22222;
+      padding: 1rem;
+    }
+    nav a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    main {
+      margin-top: 5vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input[type="number"] {
+      font-size: 1.5rem;
+      padding: 1rem;
+      width: 300px;
+      max-width: 80vw;
+      margin: 1rem 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 0.8rem 2rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    #total {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      background-color: rgba(255,255,255,0.8);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="about.html">ご由緒</a>
+    <a href="omikuji.html">おみくじ</a>
+    <a href="kitou.html">ご祈祷</a>
+    <a href="ofuse.html">お布施</a>
+      <a href="ofuse_en.html" style="float:right; font-size: 1rem;">English</a>
+  </nav>
+
+  <main>
+    <h1>お布施のご入力</h1>
+    <input type="number" id="donation" placeholder="金額を入力 (円)" />
+    <br>
+    <button onclick="addDonation()">お布施する</button>
+    <div id="total">これまでのお布施総額: 0 円</div>
+  </main>
+
+  <script>
+    function updateTotal() {
+      const total = localStorage.getItem("donationTotal") || "0";
+      document.getElementById("total").innerText = `これまでのお布施総額: ${total} 円`;
+    }
+
+    function addDonation() {
+      const input = document.getElementById("donation");
+      const amount = parseInt(input.value);
+      if (!isNaN(amount) && amount > 0) {
+        const current = parseInt(localStorage.getItem("donationTotal") || "0");
+        const newTotal = current + amount;
+        localStorage.setItem("donationTotal", newTotal.toString());
+        updateTotal();
+        input.value = "";
+      } else {
+        alert("正しい金額を入力してください");
+      }
+    }
+
+    updateTotal();
+  </script>
+</body>
+</html>
