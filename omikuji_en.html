@@ -104,15 +104,15 @@
   { name: 'Great Curse', message: 'Risks are hidden throughout the project. Stay calm, reassess the structure, and aim for a strong recovery.' }
 ];
 
-    function drawOmikuji() {
-      const index = Math.floor(Math.random() * fortunes.length);
-      const result = fortunes[index];
-      const box = document.getElementById("omikuji-box");
-      box.style.transform = "rotateY(360deg)";
-      setTimeout(() => {
-        document.getElementById("result").innerHTML = `<strong>${result.name}</strong><br>${result.message}`;
-        box.style.transform = "none";
-      }, 600);
+   function drawOmikuji() {
+  const index = Math.floor(Math.random() * projectFortunes.length);
+  const result = projectFortunes[index];
+  const box = document.getElementById("omikuji-box");
+  box.style.transform = "rotateY(360deg)";
+  setTimeout(() => {
+    document.getElementById("result").innerHTML = `<strong>${result.name}</strong><br>${result.message}`;
+    box.style.transform = "none";
+  }, 600);
     }
   </script>
   <a href="omikuji.html" class="lang-switch">JP</a>
