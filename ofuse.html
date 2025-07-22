@@ -55,14 +55,17 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">ホーム</a>
-    <a href="about.html">ご由緒</a>
-    <a href="omikuji.html">おみくじ</a>
-    <a href="kitou.html">ご祈祷</a>
-    <a href="ofuse.html">お布施</a>
-      <a href="ofuse_en.html" style="float:right; font-size: 1rem;">English</a>
-  </nav>
+<!-- ナビバーの読み込み場所 -->
+<div id="navbar-placeholder"></div>
+
+<!-- ナビバー読み込み用JavaScript -->
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    });
+</script>
 
   <main>
     <h1>お布施のご入力</h1>
