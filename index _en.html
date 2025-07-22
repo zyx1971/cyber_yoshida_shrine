@@ -71,13 +71,17 @@
     <h1>Cyber<br>Yoshida Shrine</h1>
     <p>Shrine for Safe System Go-Lives and Protection from Project Failures</p>
   </header>
+<!-- ナビバーの読み込み場所 -->
+<div id="navbar-placeholder"></div>
 
-  <nav>
-    <a href="about.html">About</a>
-    <a href="omikuji.html">Omikuji</a>
-    <a href="kitou.html">Prayer</a>
-    <a href="ofuse.html">Offering</a>
-  </nav>
+<!-- ナビバー読み込み用JavaScript -->
+<script>
+  fetch("navbar_en.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    });
+</script>
 
   <main>
     <!-- トップページ用のコンテンツをここに追加することも可能です -->
