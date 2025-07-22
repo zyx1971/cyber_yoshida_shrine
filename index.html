@@ -69,6 +69,17 @@
   </style>
 </head>
 <body>
+  <!-- ナビバーの読み込み場所 -->
+<div id="navbar-placeholder"></div>
+
+<!-- ナビバー読み込み用JavaScript -->
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    });
+</script>
   <header>
     <h1>サイバー<br>吉田神社</h1>
     <p>システムGo-Live安全祈願・プロジェクト炎上除けの神社</p>
