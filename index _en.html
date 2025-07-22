@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,6 +64,22 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
+    .lang-switch {
+  position: fixed;       /* ← 常時固定表示 */
+  bottom: 20px;          /* ← 画面下から20px */
+  left: 20px;            /* ← 画面左から20px */
+  background-color: #b22222;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  z-index: 9999;         /* ← 他要素の上に表示 */
+}
+
+.lang-switch:hover {
+  background-color: #8b1a1a;
+}
   </style>
 </head>
 <body>
@@ -103,5 +119,6 @@ const projectFortunes = [
   { name: 'Great Curse', message: 'Risks are hidden throughout the project. Stay calm, reassess the structure, and aim for a strong recovery.' }
     ];
   </script>
+  <a href="index.html" class="lang-switch">EN</a>
 </body>
 </html>
