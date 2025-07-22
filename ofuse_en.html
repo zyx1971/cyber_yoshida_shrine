@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>お布施 | サイバー吉田神社</title>
+  <title>Offering | Cyber Yoshida Shrine</title>
   <style>
     body {
       font-family: 'Shippori Mincho', serif;
@@ -56,26 +56,26 @@
 </head>
 <body>
   <nav>
-    <a href="index.html">ホーム</a>
-    <a href="about.html">ご由緒</a>
-    <a href="omikuji.html">おみくじ</a>
-    <a href="kitou.html">ご祈祷</a>
-    <a href="ofuse.html">お布施</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="omikuji.html">Omikuji</a>
+    <a href="kitou.html">Prayer</a>
+    <a href="ofuse.html">Offering</a>
       <a href="ofuse_en.html" style="float:right; font-size: 1rem;">English</a>
   </nav>
 
   <main>
-    <h1>お布施のご入力</h1>
-    <input type="number" id="donation" placeholder="金額を入力 (円)" />
+    <h1>Offering Input</h1>
+    <input type="number" id="donation" placeholder="Input Amount (Yen)" />
     <br>
-    <button onclick="addDonation()">お布施する</button>
-    <div id="total">これまでのお布施総額: 0 円</div>
+    <button onclick="addDonation()">Make an Offering</button>
+    <div id="total">Total Amount Offered: 0 Yen</div>
   </main>
 
   <script>
     function updateTotal() {
       const total = localStorage.getItem("donationTotal") || "0";
-      document.getElementById("total").innerText = `これまでのお布施総額: ${total} 円`;
+      document.getElementById("total").innerText = `Total Amount Offered: ${total} Yen`;
     }
 
     function addDonation() {
@@ -88,7 +88,7 @@
         updateTotal();
         input.value = "";
       } else {
-        alert("正しい金額を入力してください");
+        alert("Please correct amount");
       }
     }
 
